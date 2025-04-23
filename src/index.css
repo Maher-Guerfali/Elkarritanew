@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 0 0 0;
+    --color-accent: 99 102 241;
+  }
+
+  :root.light-theme {
+    --color-primary: 255 255 255;
+    --color-accent: 79 70 229;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-primary-950 text-primary-50 font-sans antialiased transition-colors duration-300;
+  }
+
+  .light-theme body {
+    @apply bg-white text-gray-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium tracking-wider uppercase transition-colors duration-200 ease-in-out rounded-md;
+  }
+  
+  .btn-primary {
+    @apply bg-accent-600 text-white hover:bg-accent-700 focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 focus:ring-offset-primary-950;
+  }
+  
+  .btn-secondary {
+    @apply bg-primary-800 text-white hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-primary-950;
+  }
+  
+  .btn-outline {
+    @apply border border-white/20 bg-transparent hover:bg-white/10 focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-primary-950;
+  }
+  
+  .container-custom {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .card {
+    @apply rounded-lg bg-primary-900 border border-primary-800 overflow-hidden transition-all duration-300 ease-in-out hover:border-accent-600;
+  }
+  
+  .input {
+    @apply w-full px-4 py-3 bg-primary-800 border border-primary-700 rounded-md focus:outline-none focus:ring-2 focus:ring-accent-600 focus:border-transparent;
+  }
+
+  .light-theme .btn-primary {
+    @apply ring-offset-white;
+  }
+
+  .light-theme .btn-secondary {
+    @apply bg-gray-200 text-gray-900 hover:bg-gray-300 ring-offset-white;
+  }
+
+  .light-theme .btn-outline {
+    @apply border-gray-300 hover:bg-gray-100 ring-offset-white text-gray-900;
+  }
+
+  .light-theme .card {
+    @apply bg-white border-gray-200;
+  }
+
+  .light-theme .input {
+    @apply bg-gray-100 border-gray-200 text-gray-900;
+  }
+}
+
+.sliding-text {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sliding-text-inner {
+  display: inline-block;
+  animation: marquee 25s linear infinite;
+}
+
+.search-container {
+  transition: all 0.3s ease-in-out;
+}
+
+.search-container.expanded {
+  height: 220px;
+}
+
+.search-container.collapsed {
+  height: 48px;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
